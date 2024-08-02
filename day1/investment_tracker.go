@@ -4,28 +4,45 @@ import (
 	"fmt"
 	"math"
 )
-
-func main() {
-	const infationrate = 2.5
+const infationrate = 2.5
 	var investment float64
 	var returnintrest float64
 	var years float64
 
-	fmt.Print("Enter the investment rate : ")
+func main() {
+	
+
+	outpuText("Enter the investment rate : ")
 	fmt.Scan(&investment)
 
-	fmt.Print("Enter the Expected Return Rate : ")
+	outpuText("Enter the Expected Return Rate : ")
 	fmt.Scan(&returnintrest)
 
-	fmt.Print("Enter the years :")
+	outpuText("Enter the years :")
 	fmt.Scan(&years)
 
-	var futureyear = investment * math.Pow(1+returnintrest/100, years)
+	futureyear := investment * math.Pow(1+returnintrest/100, years)
 
 	futureinflation := futureyear / math.Pow(1+infationrate/100, years)
 
-	fmt.Println("The futureyear amount will be :", futureyear)
+	formeattedFv := fmt.Sprintf("The futureyear amount will be : %.1f\n", futureyear)
 
-	fmt.Println("Future inflation amount will be :", futureinflation)
+	formattedRFV := fmt.Sprintf("Future inflation amount will be : %.1f\n", futureinflation)
+
+	fmt.Print(formeattedFv, formattedRFV)
 
 }
+func outpuText(text string) {
+	fmt.Print(text)
+}
+
+func calculatefuturevalues(investment , returnintrest , years float64 ){
+
+	fv := investment * math.Pow(1+returnintrest/100, years),
+	
+	rfv := futureyear / math.Pow(1+infationrate/100, years)
+	return fv , rfv
+
+
+}
+
